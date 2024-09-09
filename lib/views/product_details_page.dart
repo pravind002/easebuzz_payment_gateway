@@ -1,6 +1,8 @@
+import 'package:easebuzz/widgets/text.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
+import '../constants/easebuzz_module.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key, required this.data});
@@ -10,8 +12,9 @@ class ProductDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: whiteColor),
         centerTitle: true,
+        backgroundColor: primaryColor,
+        iconTheme: const IconThemeData(color: whiteColor),
         title: const Text(
           'Product Details',
           style: TextStyle(color: whiteColor),
@@ -44,6 +47,43 @@ class ProductDetailsPage extends StatelessWidget {
                   color: greenColor, fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: whiteColor,
+        elevation: 10,
+        child: SizedBox(
+          height: 100,
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            children: [
+              Expanded(
+                  child: customText('${data['amount']} /-',
+                      fontSize: 18, fontWeight: FontWeight.bold)),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EasebuzzModule(
+                                double.parse('${data['amount']}'))));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Center(
+                      child: customText('PAY NOW',
+                          color: whiteColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

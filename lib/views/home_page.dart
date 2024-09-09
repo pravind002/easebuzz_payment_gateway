@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
 import '../constants/colors.dart';
 import '../data/prodduct_data.dart';
 import 'my_cart_page.dart';
@@ -11,13 +12,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor:primaryColor,
         iconTheme: const IconThemeData(color: whiteColor),
         title: const Text(
           'S W A N',
-          style: TextStyle(color: whiteColor),
+          style: TextStyle(color: whiteColor, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -39,16 +40,6 @@ class HomePage extends StatelessWidget {
                   color: blueColor.withOpacity(.05),
                   height: MediaQuery.of(context).size.height * .25,
                 ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  color: blackColor.withOpacity(.05),
-                  height: MediaQuery.of(context).size.height * .25,
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  color: greenColor.withOpacity(.05),
-                  height: MediaQuery.of(context).size.height * .25,
-                ),
               ],
               options: CarouselOptions(
                 height: MediaQuery.of(context).size.height * .25,
@@ -57,7 +48,7 @@ class HomePage extends StatelessWidget {
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,
-                autoPlay: true,
+                // autoPlay: true,
                 autoPlayInterval: const Duration(seconds: 3),
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,
